@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		
+		<!-- TITLE OF PRESENTATION -->
+		<title>Cozy Foley: Unpacking Adaptive Audio</title>
+		
+		<!-- DESCRIPTION OF PRESENTATION  -->
+		<meta name="description" content="Cozy Foley, Unpacking Adaptive Audio, 19 April 2022">
+		
+		<!-- AUTHOR --> 
+		<meta name="author" content="Jentery Sayers">
+		
+		<!-- RESPONSIVE DESIGN -->
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		
+		<!-- CSS FOR THE FRAMEWORK -->
+		<link rel="stylesheet" href="css/reveal.min.css">
+		
+		<!-- CSS FOR PRESENTATION CONTENT -->
+		<link rel="stylesheet" href="css/theme.css" id="theme">
+	
+		<!-- CSS FOR SYNTAX HIGHLIGHTING -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+	</head>
+	
+	<!-- BEGIN SLIDEDECK -->
+	
+	<body>
+		<div class="reveal">
+		<div class="slides">
+		<!-- BEGIN SLIDES -->	
+
+	<section id="title" data-background="boomboxUnpacking.png">
+  	<h1>Cozy Foley: <em>Unpacking</em><br>Adaptive Audio</h1>
+  	<h3>Jentery Sayers | <a href="mailto:jentery@uvic.ca">jentery@uvic.ca</a><br>
+  		 <a href="https://www.uvic.ca/humanities/english/">English</a> and <a href="https://www.uvic.ca/interdisciplinary/cspt/">CSPT</a> | University of Victoria<br>
+      The Praxis Studio | <a href="https://uvicpraxis.github.io/playerStories.html">"Player Stories"</a> | 19 April 2022<br>Slides Online: <a href="http://jentery.github.io/unpacking" target="_blank">jentery.github.io/unpacking</a></h3>
+  	<small>Use your left + right arrow keys or spacebar to navigate this deck. Or swipe.<br>I took this screen of Witch Beam's <em>Unpacking</em> (2021) on 11 April 2022.</small>
+    </section>
+
+  	<section id="acknowledgements" data-background="beaconHill.jpeg">
+  	<h1>Acknowledgements</h1>
+  	<h3>I acknowledge and respect the lək̓ʷəŋən peoples on whose<br>traditional territory the University of Victoria stands, and the<br>Songhees, Esquimalt, and W̱SÁNEĆ peoples whose historical<br>relationships with the land continue to this day. I am a visitor here and hope to one day become a proper guest.</h3>
+    <h3>"The hill here is called MEE-qan which means 'warmed by the sun'.<br>This seaward slope was a popular place for rest and play – a game<br>similar to field hockey, called Coqwialls, was played here. At the<br>bottom of the hill was a small, palisaded village that was occupied<br>intermittently from 1,000 until approximately 300 years ago. The<br>settlement was here for defence during times of war, and it was<br>also important for reef net fishing. The starchy bulbs of the wildflower, Camas, were an important food source gathered in this area.<br>The hill here is also known as Beacon Hill." -- <a href="https://www.songheesnation.ca/community/l-k-ng-n-traditional-territory">Songhees Nation</a></h3>
+    <small>Image care of SFU's Bill Reid Centre, <a href="https://www.sfu.ca/brc/virtual_village/coast_salish/Songhees/signs-of-lekwungen.html">"Signs of Lekwungen."</a><br>The marker pictured is a bronze casting of an original cedar carving conceptualized and carved by<br>Coast Salish artist and master carver, Butch Dick, with his son, Clarence Dick Jr.<br>Many thanks as well to Theresa Stewart-Ambo and K. Wayne Yang for their research on land acknowledgements,<br>including <a href="https://read.dukeupress.edu/social-text/article-abstract/39/1%20(146)/21/173031/Beyond-Land-Acknowledgment-in-Settler-Institutions?redirectedFrom=fulltext">"Beyond Land Acknowledgment in Settler Institutions."</a></small>
+  	</section>
+
+    <section id="acknowledgements2" class="transparent" data-background="beaconHill.jpeg"></section>
+
+  	<section id="today" data-background="outlineUnpacking.png">
+    <h1>The Next 40ish Minutes</h1>
+    <h3>Some Context for this Project</h3>
+    <h3>Introduce "Adaptive Audio"</h3>
+    <h3>Engage an Example: <a href="https://www.unpackinggame.com/"><em>Unpacking</em></a> (2021)</h3>
+    <h3>Via Media Aesthetics:<br>Mechanics / Interface + Narrative / Story + Accessibility / Audio</h3>
+    <h3>Arrive at the Politics + Aesthetics of the "Cozy" Genre</h3>
+    <small>I took this screen of Witch Beam's <em>Unpacking</em> (2021) on 11 April 2022.</small>
+    </section>
+
+    <section id="context" data-background="jacksonMyBodySourceFade.png">
+    <h1>Some History and Context</h1>
+    <h3>Part of a Book Project for U. of Michigan P.</h3>
+    <h3>About Adaptive DX, SFX, BG, FOL + VO in Games (not MX)</h3>
+    <h3>Aims to Challenge Toxic Cultures in Games and Audio</h3>
+    <h3>Research Began with My Dissertation in 2009-11 (eeek!)</h3>
+    <small>I took this screen of page source for Shelley Jackson's <a href="https://collection.eliterature.org/1/works/jackson__my_body_a_wunderkammer.html"><em>my body — a Wunderkammer</em></a> (1997) on 18 April 2022.</small>
+    </section>
+
+    <section id="context2" class="transparent" data-background="jacksonMyBodySource.png">
+    </section>
+
+    <section id="adaptive" data-background="scruffyAdaptiveFade.png">
+    <h1>What's Adaptive Audio?</h1>
+    <h3>Reduces Repetition + "Canned" Feel of Soundscapes + Objects</h3>
+    <h3>Corresponds with Actions + Events + Conditions</h3>
+    <h3>Randomized, Probabilistic, Textured, Real-Time</h3>
+    <h3>Associated with Middleware + Engines such as FMOD + Wwise</h3>
+    <small>I took this screen of Scruffy's <a href="https://www.youtube.com/watch?v=p-FLWabby4Y">"What Is Adaptive Audio?"</a> (2019) on 18 April 2022.<br>Note this video is also an advertisement for FMOD.</small>
+    </section>
+
+    <section id="adaptive2" class="transparent" data-background="scruffyAdaptive.png">
+    </section>
+
+    <section id="whyadaptive" data-background="scruffyAdaptive2Fade.png">
+    <h1>Why Adaptive Audio?</h1>
+    <h3>Typically Overlooked, "Muted," or Deferred</h3>
+    <h3>A Point of Departure (if "minor") for Criticism</h3>
+    <h3>"Organized Sound": How Games + Genres Are Made + Experienced</h3>
+    <h3>Not Only about Listening or Hearing</h3>
+    <h3>Helps to Tell a Story (see <a href="https://www.gdcvault.com/play/1025155/How-Sound-Tells-the-Story">Em Halberstadt</a>)</h3>
+    <small>I took this screen of Scruffy's <a href="https://www.youtube.com/watch?v=p-FLWabby4Y">"What Is Adaptive Audio?"</a> (2019) on 18 April 2022.</small>
+    </section>
+
+    <section id="why2" class="transparent" data-background="scruffyAdaptive2.png">
+    </section>
+
+    <section id="unpacking" data-background="aboutUnpacking.png">
+    <h1>About <em>Unpacking</em></h1>
+    <h3>Made in Unity by Witch Beam (Brisbane) for consoles + PC</h3>
+    <h3>Published by Humble in 2021</h3>
+    <h3><a href="https://twitter.com/UnpackingALife/status/1514950044533030919?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Etweet">Team</a> includes Wren Brier (writing + design)<br>Tim Dawson (technical + design)<br>Annie VanderMeer (narrative assistance)<br>Angus Doolan (art)<br>Jeff van Dyck (sound design)<br>Angela van Dyck with Ella van Dyck (Foley)</h3>
+    <small>I mostly played the XBox Series S version of <a href="https://www.unpackinggame.com/"><em>Unpacking</em></a>.<br>I took this screen of Witch Beam's <em>Unpacking</em> (2021) on 15 April 2022.</small>
+    </section>
+
+    <section id="interface" data-background="unpackingInterface.png">
+    <h1><em>Unpacking</em>'s<br>Interface and Mechanics</h1>
+    <h3>Puzzle + Simulation Game with Diagonal-Down Perspective</h3>
+    <h3>Practically Wordless; PC Is Not Seen or Heard until Ending</h3>
+    <h3>Most "Unpacking" Verbs Are "Point and Select"</h3>
+    <h3>Camera Traverses Domestic Spaces; Does Not Assume PC Position</h3>
+    <h3>Objects Snap to Grid; Cannot Be Placed Just Anywhere</h3>
+    <h3>Eight Time-Stamped Stages, with a Total of 35 Rooms</h3>
+ 
+    <small>I took this screen of Witch Beam's <em>Unpacking</em> (2021) on 18 April 2022.</small>
+    </section>
+
+     <section id="boxesofstuff" data-background="unpackingMechanics.png"><video data-autoplay src="unpackingMechanics.mp4"></video>
+    <small>I took this video of Witch Beam's <em>Unpacking</em> (2021) on 18 April 2022. The music is off.</small>
+    </section>
+
+    <section id="mechanics" data-background="unpackingInterface.png"><video data-autoplay src="unpackingInterface.mp4"></video>
+    <small>I took this video of Witch Beam's <em>Unpacking</em> (2021) on 18 April 2022. The music is off.</small>
+    </section>
+
+    <section id="spoilers" class="transparent" data-background="spoilers.jpg">
+    </section>
+
+    <section id="narrative" data-background="unpackingStage1Fade.png">
+    <h1><em>Unpacking</em>'s<br>Narrative and Story</h1>
+    <h3>Unnamed Character Is Bisexual, Disabled, and Jewish<br>Players Follow Her Story across Moves (see <a href="https://uppercutcrit.com/unpacking-examining-queer-judaism-in-transition/">Deitz</a> and <a href="https://i-d.vice.com/en_uk/article/7kbj54/unpacking-bisexual-video-game">Sylvester</a>)</h3>
+    <h3>Brier Says the Game Is Semi-Autobiographical</h3>
+    <h3>Some Pixel-Art Objects (stuffed animal, D&D, menorah, cup)<br>Age yet Persist across Moves Set in Australia</h3>
+    <h3>Players Act as "Interior Designers" Shaping Character's Story</h3>
+    <h3>Narrative Arc Is Mostly Fixed from Teenage to Adult Years</h3>
+    <h3>No Cut Scenes, Voice-Over, or Dialogue</h3>
+    <h3>Completing a Stage Places It in Your Photo Album</h3>
+    <small>I took this screen of Witch Beam's <em>Unpacking</em> (2021) on 11 April 2022.</small>
+    </section>
+
+    <section id="stage1" class="transparent" data-background="unpackingStage1.png">
+    </section>
+
+    <section id="stage2" class="transparent" data-background="unpackingStage2.png">
+    </section>
+
+    <section id="stage3" class="transparent" data-background="unpackingStage3.png">
+    </section>
+
+    <section id="stage3b" class="transparent" data-background="unpackingStage3b.png">
+    </section>
+
+     <section id="stage4" class="transparent" data-background="unpackingStage4.png">
+    </section>
+
+    <section id="stage4b" class="transparent" data-background="unpackingStage4b.png">
+    </section>
+
+     <section id="stage5" class="transparent" data-background="unpackingStage5.png">
+    </section>
+
+    <section id="stage5b" class="transparent" data-background="unpackingStage5b.png">
+    </section>
+
+     <section id="stage6" class="transparent" data-background="unpackingStage6.png">
+    </section>
+
+     <section id="stage6b" class="transparent" data-background="unpackingStage6b.png">
+    </section>
+
+     <section id="stage7" class="transparent" data-background="unpackingStage7.png">
+    </section>
+
+    <section id="stage7b" class="transparent" data-background="unpackingStage7b.png">
+    </section>
+
+     <section id="stage8" class="transparent" data-background="unpackingStage8.png">
+    </section>
+
+    <section id="stage8b" class="transparent" data-background="unpackingStage8b.png">
+    </section>
+
+    <section id="stage8c" class="transparent" data-background="unpackingStage8c.png">
+    </section>
+
+    <section id="ending" class="transparent" data-background="unpackingEnding.png">
+    </section>
+
+    <section id="accessibility" data-background="unpackingAccessibilityFade.png">
+    <h1><em>Unpacking</em>'s Accessibility</h1>
+    <h3>Icon Size May Be Large; Swipe or Fade Room Swap Animation</h3>
+    <h3>Highly Visual; Practically Wordless; Audio Not Required</h3>
+    <h3>Vibration / Rumble Available (Audio Files for Haptics)</h3>
+    <h3>Puzzle Mode May Be Removed ("Items Everywhere").</h3>
+    <h3>"Unpacking is proud to be an accessible game." - <a href="https://www.unpackinggame.com/">official site</a></h3>
+    <small>I took this screen of Witch Beam's <em>Unpacking</em> (2021) on 18 April 2022.</small>
+    </section>
+
+    <section id="accessAgain" class="transparent" data-background="unpackingAccessibility.png">
+    </section>
+
+    <section id="noPuzzle" class="transparent" data-background="unpackingNoPuzzle.png">
+    </section>
+
+    <section id="accessAudio" class="transparent" data-background="unpackingAudioOptions.png">
+    </section>
+
+    <section id="audio" data-background="unpackingAudioReplay.png">
+    <h1><em>Unpacking</em>'s Audio</h1>
+    <h3><a href="https://twitter.com/SanatanaMishra/status/1456120197081821185">"[O]ver 14,000 foley wav files"</a> by Angela and Ella van Dyck</h3>
+    <h3>Audio in Reaper + Wwise, Relying Heavily on <a href="https://www.audiokinetic.com/library/edge/?source=WwiseFundamentalApproach&id=understanding_switches">"Switches"</a></h3>
+    <h3>Foley Contributes to an Object's Importance + Where It "Belongs"<br>Renders Objects Relational + Some "Interactive"</h3>
+    <h3>Ambient Sounds and "Noiseprints" Afford Sense of Place</h3>
+    <h3>Hi-fi Audio Contrasts with Low-Fi Pixel Art (Evocative?)</h3>
+    <h3>Amusing Audio "Signature" of Unpacking Process<br>Is Available with Stage Completion</h3>
+    <small>I took this screen of Witch Beam's <em>Unpacking</em> (2021) on 15 April 2022.</small>
+    </section>
+
+    <section id="audiouke" data-background="unpackingUke.png"><video data-autoplay src="unpackingUke.mp4"></video>
+    <small>I took this video of Witch Beam's <em>Unpacking</em> (2021) on 15 April 2022. The music is off.</small>
+    </section>
+
+    <section id="audioreplay" data-background="unpackingAudioReplay.png"><video data-autoplay src="unpackingAudioReplay.mp4"></video>
+   <small>I took this video of Witch Beam's <em>Unpacking</em> (2021) on 11 April 2022. The music is off.<br>The playback speed is higher than the actual play speed.</small>
+    </section>
+
+    <section id="audioreplay" data-background="unpackingRadio.png"><video data-autoplay src="unpackingRadio.mp4"></video>
+   <small>I took this video of Witch Beam's <em>Unpacking</em> (2021) on 18 April 2022. The music is off.</small>
+    </section>
+
+    <section id="cozy" data-background="unpackingCozy.png">
+    <h1>Cozy Audio?</h1>
+    <h3>Inclusive Design: Lack of Intensity + Acousmatic Surprise, e.g.</h3>
+    <h3>No Score or Timer SFX; Practically All SFX Are Diegetic</h3>
+    <h3>Foley Reinforces the Familiar "Ritual" of a Chore<br>
+    Treats Intermezzo ("Rest" / "Safe") as the Main Narrative</h3>
+    <h3>Audio Amplifies Player Agency over Pacing in Particular</h3>
+    <h3>See Howe et al. for More on <a href="https://www.projecthorseshoe.com/reports/featured/ph17r3.htm">"Coziness in Games."</a></h3>
+    <small>I took this screen of Witch Beam's <em>Unpacking</em> (2021) on 18 April 2022.</small>
+    </section>
+
+    <section id="significance" data-background="boomZoom.png">
+    <h1>Under What Assumptions?<br>To What Effects?</h1>
+    <h3>Audio Helps to Reproduce a Game's Norms</h3>
+    <h3>Cozy Game Aesthetics Are Not Apolitical<br>(Critique of Heteronormative Domesticity and<br>Default White Male PC, e.g.)</h3>
+    <h3>Audio Shapes Robustness + Relations<br>(Randomization; No Throwing or Breaking SFX, e.g.)</h3>
+    <h3>Even "Optional" / "Invisible" / "Muted" Audio<br>Can Be Influential / Affecting</h3>
+    <h3>Cozy Political Aims Are Distinct from "Rhythm"? (Thanks, Julie!)</h3>
+  
+ 
+     <small>I took this screen of Witch Beam's <em>Unpacking</em> (2021) on 11 April 2022.</small>
+    </section>
+
+    <!--- need video ? 
+
+    <section id="belojevic" data-background="belojevic.jpg"><video data-autoplay src="https://github.com/jentery/stanford/blob/gh-pages/images/nina.mov?raw="></video>
+    <small>Image care of Nina Belojevic</small>
+    </section -->
+
+    <section id="again" data-background="boomboxUnpacking.png">
+    <h1>Thanks Again</h1>
+    <h3>Especially to . . .<br>Samuel Adesubokan, Abby Fry, Julie Funk,<br>Braeden Hallman, Madyson Huck, and Asia Tyson<br>for a wonderful year of Praxis talks and discussion.</h3>
+    <small>Feel free to email me at <a href="mailto:jentery@uvic.ca">jentery@uvic.ca</a>.</small>
+    </section>
+
+  
+
+		<!-- Close slides div-->
+		</div>
+		<!-- END SLIDES--> 
+		
+		<!-- BEGIN TRANSITION AND NAVIGATION STYLES / FEATURES --> 
+		
+	<!-- initialize reveal.js + related javascripts --> 
+	
+	<script src="lib/js/head.min.js"></script>
+	<script src="js/reveal.min.js"></script>
+	<script>			
+	Reveal.initialize({
+        
+    // Display controls in the bottom right corner
+    controls: false,
+
+    // Display a presentation progress bar
+    progress: true,
+
+    // Push each slide change to the browser history
+    history: true,
+
+    // Enable keyboard shortcuts for navigation
+    keyboard: true,
+
+    // Enable touch events for navigation
+    touch: true,
+    
+    // Enable an annoying rollover effect for links 
+    rollingLinks: false,
+
+    // Enable the slide overview mode
+    overview: true,
+
+    // Vertical centering of slides
+    center: true,
+
+    // Loop the presentation
+    loop: false,
+
+    // Change the presentation direction to be RTL
+    rtl: false,
+
+    // Number of milliseconds between automatically proceeding to the next slide, disabled when set to 0, this value can be overwritten by using a data-autoslide attribute on your slides
+    autoSlide: 0,
+
+    // Enable slide navigation via mouse wheel
+    mouseWheel: false,
+
+    // Transition style
+    transition: 'none', // default/cube/page/concave/zoom/linear/fade/none
+
+    // Transition speed
+    transitionSpeed: 'fast', // default/fast/slow
+
+    // Transition style for full page backgrounds
+    backgroundTransition: 'none', // default/linear/none
+        
+    // Optional libraries used to extend reveal.js | affords syntax highlighting + editing, zoom, speaker notes, and markdown
+		dependencies: [
+		{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+		{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+		{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+		{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+		{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+		{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+		]
+			});
+	</script>	
+	</body>
+	<!-- END SLIDEDECK--> 	
+</html>
